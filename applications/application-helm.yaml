@@ -8,6 +8,8 @@ spec:
   source:
     repoURL: https://github.com/TalelKarim/test-argo.git  
     targetRevision: master
+    plugin:
+       - argocd-vault-plugin-helm
     path: helm
     helm:
       releaseName:  velero
