@@ -28,36 +28,42 @@ data:
           - "vault-configuration"
       lockRepo: false  
 
+
   avp-helm.yaml: |
-    ---
-    apiVersion: argoproj.io/v1alpha1
-    kind: ConfigManagementPlugin
-    metadata:
-      name: argocd-vault-plugin-helm
-    spec:
-      allowConcurrency: true
-      discover:
-        find:
+      ---
+      apiVersion: argoproj.io/v1alpha1
+      kind: ConfigManagementPlugin
+      metadata:
+        name: argocd-vault-plugin-helm
+      spec:
+        allowConcurrency: true
+        discover:
+          find:
+            command:
+              - sh
+              - "-c"
+              - "find . -name 'Chart.yaml' && find . -name 'values.yaml'"
+          init:
+            command: ["/bin/sh", "-x", "-c"]
+            args: ["helm dep build"]
+            args: ["helm dep update"]    
+        generate:
           command:
             - sh
             - "-c"
-            - "find . -name 'Chart.yaml' && find . -name 'values.yaml' xargs -I {} grep \"<path\\|avp\\.kubernetes\\.io\" {} | grep ."
-      generate:
-        command:
-          - bash
-          - "-c"
-          - |
-            helm template $ARGOCD_APP_NAME -n $ARGOCD_APP_NAMESPACE -f <(echo "$ARGOCD_ENV_HELM_VALUES") . |
-            argocd-vault-plugin generate -s vault-configuration -
-      lockRepo: false
+            - |
+              helm template $ARGOCD_APP_NAME --include-crds -n $ARGOCD_APP_NAMESPACE ${ARGOCD_ENV_HELM_ARGS} . |
+              argocd-vault-plugin generate -s vault-configuration -
+        lockRepo: false
 
 
 
   avp-helm-with-args.yaml: |
+    ---
     apiVersion: argoproj.io/v1alpha1
     kind: ConfigManagementPlugin
     metadata:
-      name: argocd-vault-plugin
+      name: argocd-vault-plugin-helm-with-args
     spec:
       allowConcurrency: true
       discover:
@@ -66,7 +72,7 @@ data:
             - sh
             - "-c"
             - "find . -name '*.yaml' | xargs -I {} grep \"<path\\|avp\\.kubernetes\\.io\" {} | grep ."
-     generate:
+      generate:
         command:
           - bash
           - "-c"
