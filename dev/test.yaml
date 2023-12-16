@@ -3,7 +3,7 @@ kind: Secret
 metadata:
   name: spanish-secret
   annotations:
-    avp.kubernetes.io/path: "kv/data/argocd"
+    avp.kubernetes.io/path: "kv-v2/data/scaleway-access"
 type: Opaque
 stringData:
-  TOKEN: <password>
+  TOKEN: <scaleway_access_key_id>
