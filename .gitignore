@@ -1,2 +1,3 @@
 application.yaml
 argocd-vault-credentials.yaml
+applications/
