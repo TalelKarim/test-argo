@@ -1,0 +1,55 @@
+---
+velero:
+  namespace:
+    labels: {}
+
+  # Backup schedules to create.
+  schedules:
+    dolibarr:
+      disabled: false
+      schedule: "0/2 * * * *"
+      useOwnerReferencesInBackup: false
+      template:
+        ttl: "720h"
+        storageLocation: test
+        includedNamespaces:
+        - argocd
+    
+  
+
+  # Backup storage locations to create
+  configuration:
+    backupStorageLocation:
+      - name:  test
+        provider: aws
+        bucket: arcons-backup
+        prefix:  test
+        validationFrequency:
+        accessMode: ReadWrite
+        default: true
+        config: {
+          region: fr-par,
+          s3Url: https://s3.fr-par.scw.cloud
+        }
+
+  initContainers:
+    - name: velero-plugin-for-aws
+      image: velero/velero-plugin-for-aws:v1.8.2
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+        - mountPath: /target
+          name: plugins
+
+  snapshotsEnabled: false
+
+  credentials:
+    useSecret: true
+    name:
+    existingSecret:
+    secretContents:
+      cloud: |
+        [default]
+        aws_access_key_id=<path:kv-v2/data/scaleway-access#scaleway_access_key_id>
+        aws_secret_access_key=<path:kv-v2/data/scaleway-access#scaleway_secret_access_key>
+    extraEnvVars: {}
+    extraSecretRef: ""
