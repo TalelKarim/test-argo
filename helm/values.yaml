@@ -45,7 +45,7 @@ velero:
   credentials:
     useSecret: true
     name:
-    existingSecret: iam-credentials-scaleway
+    existingSecret:
     secretContents:
       cloud: |
         [default]
