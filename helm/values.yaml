@@ -49,7 +49,7 @@ velero:
     secretContents:
       cloud: |
         [default]
-          aws_access_key_id=vault:kv-v2/data/scaleway-access#scaleway_access_key_id
-          aws_secret_access_key=vault:kv-v2/data/scaleway-access#scaleway_secret_access_key
+        aws_access_key_id=vault:kv-v2/scaleway-access#scaleway_access_key_id
+        aws_secret_access_key=vault:kv-v2/scaleway-access#scaleway_secret_access_key
     extraEnvVars: {}
     extraSecretRef: ""
