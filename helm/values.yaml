@@ -44,12 +44,11 @@ velero:
 
   credentials:
     useSecret: true
-    name:
-    existingSecret:
+    existingSecret: iam-credentials-scaleway
     secretContents:
-      cloud: |
-        [default]
-        aws_access_key_id=vault:kv-v2/scaleway-access#scaleway_access_key_id
-        aws_secret_access_key=vault:kv-v2/scaleway-access#scaleway_secret_access_key
+      # cloud: |
+      #   [default]
+      #   aws_access_key_id=vault:kv-v2/scaleway-access#scaleway_access_key_id
+      #   aws_secret_access_key=vault:kv-v2/scaleway-access#scaleway_secret_access_key
     extraEnvVars: {}
     extraSecretRef: ""
