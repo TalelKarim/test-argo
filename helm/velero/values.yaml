@@ -52,3 +52,6 @@ velero:
       #   aws_secret_access_key=vault:kv-v2/scaleway-access#scaleway_secret_access_key
     extraEnvVars: {}
     extraSecretRef: ""
+  
+  veleroRestores:
+    
