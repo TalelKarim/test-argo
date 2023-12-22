@@ -1,13 +1,13 @@
-# my-restore-chart/templates/velero-restore.yaml
-
+{{ with index .Values.veleroRestores 0 }}
 apiVersion: velero.io/v1
 kind: Restore
 metadata:
-  name: {{ .Values.veleroRestores[0].name }}
-  namespace: {{ .Release.Namespace }}
+  name: {{ .name }}
+  namespace: {{ $.Release.Namespace }}
 spec:
-  backupName: {{ .Values.veleroRestores[0].backupName }}
+  backupName: {{ .backupName }}
   includedNamespaces:
-    - {{ .Values.veleroRestores[0].includedNamespaces | quote }}
+    - {{ .includedNamespaces | quote }}
   resources:
-    - {{ .Values.veleroRestores[0].resources | quote }}  
+    - {{ .resources | quote }}
+{{ end }}
