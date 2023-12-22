@@ -7,7 +7,7 @@ velero:
   schedules:
     dolibarr:
       disabled: false
-      schedule: "0/2 * * * *"
+      schedule: "0 */1 * * *"
       useOwnerReferencesInBackup: false
       template:
         ttl: "720h"
