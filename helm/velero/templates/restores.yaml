@@ -5,7 +5,7 @@ metadata:
   name: my-restore
   namespace: velero
 spec:
-  backupName: helm-velero-dolibarr-20231222163410
+  backupName: helm-velero-dolibarr-20231222165410
   includedNamespaces:
   - nginx
   resources:
