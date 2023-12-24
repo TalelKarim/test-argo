@@ -5,7 +5,7 @@ velero:
 
   # Backup schedules to create.
   schedules:
-    dolibarr:
+    nginx-restore:
       disabled: false
       schedule: "*/2 * * * *"
       useOwnerReferencesInBackup: false
