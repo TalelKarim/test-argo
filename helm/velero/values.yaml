@@ -32,6 +32,12 @@ velero:
           s3Url: https://s3.fr-par.scw.cloud
         }
 
+    backups:
+      - name: my-test-backup-1
+        includeNamespaces:
+          - nginx
+  
+
   initContainers:
     - name: velero-plugin-for-aws
       image: velero/velero-plugin-for-aws:v1.8.2
@@ -52,11 +58,5 @@ velero:
       #   aws_secret_access_key=vault:kv-v2/scaleway-access#scaleway_secret_access_key
     extraEnvVars: {}
     extraSecretRef: ""
-  
-restores:
-  
-  - restoreName: my-nginx-restore
-    backupName: helm-velero-nginx-restore-20231224162032
-    includedNamespaces:
-      - nginx 
+
 
