@@ -53,12 +53,10 @@ velero:
     extraEnvVars: {}
     extraSecretRef: ""
   
-
-restic:
-  # Configuration for restores
-  restores:
-    - restoreName: my-nginx-restore
-      backupName: helm-velero-nginx-restore-20231224162032
-      includedNamespaces:
-        - nginx 
+restores:
+  
+  - restoreName: my-nginx-restore
+    backupName: helm-velero-nginx-restore-20231224162032
+    includedNamespaces:
+      - nginx 
 
