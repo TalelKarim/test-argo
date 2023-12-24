@@ -15,7 +15,7 @@ velero:
         includedNamespaces:
         - nginx
     
-
+  
   # Backup storage locations to create
   configuration:
     backupStorageLocation:
@@ -32,6 +32,7 @@ velero:
         }
 
     defaultBackupTTL: "720h"  # Set this to a duration greater than your schedule interval, e.g., 720 hours.
+    backupSyncPeriod: "720h"
 
 
   initContainers:
