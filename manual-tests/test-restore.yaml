@@ -2,10 +2,9 @@
 apiVersion: velero.io/v1
 kind: Restore
 metadata:
-  name: my-manual-restore-nginx-from-schedule
+  name: my-manual-restore-nginx-4
   namespace: velero 
 spec:
-  scheduleName: helm-velero-nginx-restore
-  backupName: helm-velero-nginx-restore-20231224162032
+  backupName: my-manual-backup-nginx-4
   includedNamespaces:
   - nginx
