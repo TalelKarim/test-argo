@@ -15,6 +15,10 @@ velero:
         includedNamespaces:
         - nginx
     
+    backups:
+      - name: my-test-backup-1
+        includeNamespaces:
+          - nginx
   
 
   # Backup storage locations to create
@@ -32,10 +36,6 @@ velero:
           s3Url: https://s3.fr-par.scw.cloud
         }
 
-    backups:
-      - name: my-test-backup-1
-        includeNamespaces:
-          - nginx
   
 
   initContainers:
