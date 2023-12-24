@@ -1,0 +1,13 @@
+apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  name: my-manual-backup-nginx-4
+  namespace: velero
+  annotations:
+    backup.velero.io/backup-volumes: pvc-volume  
+spec:
+  includedNamespaces:
+    - nginx
+  storageLocation: test
+  snapshotVolumes: true
+

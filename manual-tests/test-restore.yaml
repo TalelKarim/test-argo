@@ -1,0 +1,10 @@
+# velero-restore.yaml
+apiVersion: velero.io/v1
+kind: Restore
+metadata:
+  name: my-manual-restore-nginx-4
+  namespace: velero 
+spec:
+  backupName: my-manual-backup-nginx-4
+  includedNamespaces:
+  - nginx
