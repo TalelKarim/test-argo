@@ -15,7 +15,6 @@ velero:
         includedNamespaces:
         - nginx
     
-  
 
   # Backup storage locations to create
   configuration:
@@ -32,11 +31,8 @@ velero:
           s3Url: https://s3.fr-par.scw.cloud
         }
 
-    backups:
-      - name: my-test-backup-1
-        includeNamespaces:
-          - nginx
-  
+    defaultBackupTTL: "720h"  # Set this to a duration greater than your schedule interval, e.g., 720 hours.
+
 
   initContainers:
     - name: velero-plugin-for-aws
