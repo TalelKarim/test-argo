@@ -34,7 +34,6 @@ velero:
     defaultBackupTTL: "720h"  # Set this to a duration greater than your schedule interval, e.g., 720 hours.
     backupSyncPeriod: "720h"
     garbageCollectionFrequency: "720h"
-    logFormat: "debug"
 
   initContainers:
     - name: velero-plugin-for-aws
