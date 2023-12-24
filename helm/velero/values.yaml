@@ -57,7 +57,7 @@ velero:
 restic:
   # Configuration for restores
   restores:
-    - restoreName: my-restore
+    - restoreName: my-nginx-restore
       backupName: helm-velero-nginx-restore-20231224162032
       includedNamespaces:
         - nginx 
