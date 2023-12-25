@@ -21,14 +21,7 @@ velero:
           labels:
              app: "nginx-app"
 
-  restores:
-    nginx-app-restore:
-      name: dynamic_restore
-      namespace: velero
-      backupName: helm-velero-nginx-app-backup-20231225140628
-      includedNamespaces:
-        - nginx   
-        - argocd
+
   
   # Backup storage locations to create
   configuration:
