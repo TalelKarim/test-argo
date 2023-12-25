@@ -23,7 +23,7 @@ velero:
 
   restores:
     nginx-app-restore:
-      name: "dynamic-restore"
+      name: dynamic-restore
       namespace: velero
       backupName: helm-velero-nginx-app-backup-20231225140628
       includedNamespaces:

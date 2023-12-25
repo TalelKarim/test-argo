@@ -2,7 +2,7 @@
 apiVersion: velero.io/v1
 kind: Restore
 metadata:
-  #name: dynamic-restore #{{ .Values.restores.nginx-app-restore.name }}
+  name: {{ .Values.restores.nginx-app-restore.name }}
   namespace: {{ .Values.restores.nginx-app-restore.namespace }}
 spec:
   backupName: {{ .Values.restores.nginx-app-restore.backupName }}
