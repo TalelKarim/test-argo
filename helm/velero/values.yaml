@@ -35,6 +35,9 @@ velero:
     backupSyncPeriod: "720h"
     garbageCollectionFrequency: "720h"
 
+    extraEnvVars:
+      VELERO_NAMESPACE_DEBUG: "true"
+
   initContainers:
     - name: velero-plugin-for-aws
       image: velero/velero-plugin-for-aws:v1.8.2
