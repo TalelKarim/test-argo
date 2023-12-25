@@ -1,10 +1,10 @@
-# # velero-restore.yaml
-# apiVersion: velero.io/v1
-# kind: Restore
-# metadata:
-#   name: dynamic
-#   namespace: velero
-# spec:
-#   backupName: 
-#   includedNamespaces:
-#     - nginx
+# velero-restore.yaml
+apiVersion: velero.io/v1
+kind: Restore
+metadata:
+  name: dynamic
+  namespace: velero
+spec:
+  backupName: helm-velero-nginx-app-backup-20231225152441
+  includedNamespaces:
+    - nginx
