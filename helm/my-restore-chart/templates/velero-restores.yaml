@@ -1,13 +1,9 @@
-{{ with index .Values.veleroRestores 0 }}
 apiVersion: velero.io/v1
 kind: Restore
 metadata:
-  name: {{ .name }}
-  namespace: {{ $.Release.Namespace }}
+  name: {{ .Values.name }}
+  namespace: {{ .Values.Namespace }}
 spec:
-  backupName: {{ .backupName }}
+  backupName: {{ .Values.backupName }}
   includedNamespaces:
-    - {{ .includedNamespaces | quote }}
-  resources:
-    - {{ .resources | quote }}
-{{ end }}
+    - {{ .Values.includedNamespaces | quote }}

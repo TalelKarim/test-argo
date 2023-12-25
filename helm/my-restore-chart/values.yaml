@@ -1,9 +1,7 @@
 # my-restore-chart/values.yaml
 
-veleroRestores:
-  - name: my-nginx-restore
-    backupName: helm-velero-dolibarr-20231222141640
-    includedNamespaces:
+   name: my-testtt-restore
+   backupName: helm-velero-dolibarr-20231222141640
+   Namespace: argocd
+   includedNamespaces:
       - nginx 
-    resources:
-      - pv 
