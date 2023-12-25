@@ -19,7 +19,7 @@ velero:
           annotations:
              backup.velero.io/backup-volumes: pvc-volume  
           labels:
-             app: "nginx"
+             app: "nginx-app"
     
   
   # Backup storage locations to create
