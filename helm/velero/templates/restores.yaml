@@ -2,10 +2,10 @@
 apiVersion: velero.io/v1
 kind: Restore
 metadata:
-  name: "{{ .Values.restores.nginx-app-restore.name }}"
-  namespace: "{{ .Values.restores.nginx-app-restore.namespace }}"
+  name: {{ .Values.restores.nginx-app-restore.name }}
+  namespace: {{ .Values.restores.nginx-app-restore.namespace }}
 spec:
-  backupName: "{{ .Values.restores.nginx-app-restore.backupName }}"
+  backupName: {{ .Values.restores.nginx-app-restore.backupName }}
   includedNamespaces: |-
     {{- range .Values.restores.nginx-app-restore.includedNamespaces }}
     - {{ . }}
