@@ -14,6 +14,9 @@ velero:
         storageLocation: test
         includedNamespaces:
         - nginx
+        metadata:
+          labels:
+             app: "nginx"
     
   
   # Backup storage locations to create
