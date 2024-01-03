@@ -11,7 +11,7 @@ velero:
       useOwnerReferencesInBackup: false
       template:
         ttl: "720h"
-        storageLocation: test
+        storageLocation: nginx
         # volumeSnapshotLocation: test-snapshot
         snapshotVolumes: true
         includedNamespaces:
@@ -28,10 +28,10 @@ velero:
   configuration:
     uploaderType: kopia  
     backupStorageLocation:
-      - name:  test
+      - name:  nginx
         provider: aws
         bucket: arcons-backup
-        prefix:  test
+        prefix:  nginx
         validationFrequency:
         accessMode: ReadWrite
         default: true
@@ -68,11 +68,6 @@ velero:
   credentials:
     useSecret: true
     existingSecret: iam-credentials-scaleway
-    secretContents:
-      # cloud: |
-      #   [default]
-      #   aws_access_key_id=vault:kv-v2/scaleway-access#scaleway_access_key_id
-      #   aws_secret_access_key=vault:kv-v2/scaleway-access#scaleway_secret_access_key
     extraEnvVars: {}
     extraSecretRef: ""
   
