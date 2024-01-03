@@ -12,7 +12,7 @@ velero:
       template:
         ttl: "720h"
         storageLocation: test
-        volumeSnapshotLocation: test-snapshot
+        # volumeSnapshotLocation: test-snapshot
         snapshotVolumes: true
         includedNamespaces:
         - nginx
@@ -26,6 +26,7 @@ velero:
   
   # Backup storage locations to create
   configuration:
+    uploaderType: kopia  
     backupStorageLocation:
       - name:  test
         provider: aws
@@ -43,9 +44,18 @@ velero:
     backupSyncPeriod: "720h"
     garbageCollectionFrequency: "720h"
     logLevel: "error"
+    defaultSnapshotMoveData: true
+
  
 
   initContainers:
+    - name: velero-plugin-for-csi 
+      image: velero/velero-plugin-for-csi:v0.6.0
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+        - mountPath: /target
+          name: plugins
+
     - name: velero-plugin-for-aws
       image: velero/velero-plugin-for-aws:v1.8.2
       imagePullPolicy: IfNotPresent
@@ -65,13 +75,14 @@ velero:
       #   aws_secret_access_key=vault:kv-v2/scaleway-access#scaleway_secret_access_key
     extraEnvVars: {}
     extraSecretRef: ""
+  
 
-
-  volumeSnapshotLocation:
-  - name: test-snapshot
-    provider: aws
-    config: 
-      region: fr-par
+  features: EnableCSI 
+  # volumeSnapshotLocation:
+  # - name: test-snapshot
+  #   provider: aws
+  #   config: 
+  #     region: fr-par
   #    apiTimeout:
   #    resourceGroup:
   #    The ID of the subscription where volume snapshots should be stored, if different from the cluster’s subscription. If specified, also requires `configuration.volumeSnapshotLocation.config.resourceGroup`to be set. (Azure only)

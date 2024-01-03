@@ -1,0 +1,16 @@
+allowVolumeExpansion: true
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+  creationTimestamp: "2023-10-08T02:06:56Z"
+  labels:
+    k8s.scw.cloud/object: StorageClass
+    k8s.scw.cloud/system: csi
+  name: scw-bssd
+  resourceVersion: "34278834414"
+  uid: 20c948de-5b8c-4039-b248-68963c11fcb6
+provisioner: csi.scaleway.com
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer
