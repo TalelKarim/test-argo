@@ -12,6 +12,7 @@ velero:
       template:
         ttl: "720h"
         storageLocation: test
+        volumeSnapshotLocation: test-snapshot
         snapshotVolumes: true
         includedNamespaces:
         - nginx
@@ -66,9 +67,15 @@ velero:
     extraSecretRef: ""
 
 
-  # restic:
-  #   enabled: true
-  #   pathMappings:
-  #   - name: var-html
-  #     namespace: nginx
-  #     path: /mnt/data
+  volumeSnapshotLocation:
+  - name: test-snapshot
+    provider: aws
+    config: 
+      region: fr-par
+  #    apiTimeout:
+  #    resourceGroup:
+  #    The ID of the subscription where volume snapshots should be stored, if different from the cluster’s subscription. If specified, also requires `configuration.volumeSnapshotLocation.config.resourceGroup`to be set. (Azure only)
+  #    subscriptionId:
+  #    incremental:
+  #    snapshotLocation:
+  #    project:
