@@ -66,3 +66,9 @@ velero:
     extraSecretRef: ""
 
 
+  restic:
+    enabled: true
+    pathMappings:
+    - name: var-html
+      namespace: nginx
+      path: /mnt/data
