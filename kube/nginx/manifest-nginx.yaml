@@ -6,7 +6,7 @@ metadata:
   labels:
     type: local
 spec:
-  storageClassName: manual
+  storageClassName: scw-bssd
   capacity:
     storage: 10Mi
   accessModes:
@@ -21,8 +21,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: host-volume-pvc
   namespace: nginx  # Specify the namespace here
+  annotations:
+          velero.io/csi-volumesnapshot-class: "scw-snapshot"
 spec:
-  storageClassName: manual
+  storageClassName: scw-bssd
   accessModes:
     - ReadWriteOnce
   resources:

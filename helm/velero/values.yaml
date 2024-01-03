@@ -18,7 +18,7 @@ velero:
         - nginx
         metadata:
           annotations:
-             backup.velero.io/backup-volumes: pvc-volume  
+                velero.io/csi-volumesnapshot-class_csi.scaleway.com: "scw-snapshot" 
           labels:
              app: "nginx-app"
 
