@@ -12,6 +12,7 @@ velero:
       template:
         ttl: "720h"
         storageLocation: nginx
+        volumeSnapshotLocation: nginx
         # volumeSnapshotLocation: test-snapshot
         snapshotVolumes: true
         includedNamespaces:
@@ -40,6 +41,12 @@ velero:
           s3Url: https://s3.fr-par.scw.cloud
         }
 
+    volumeSnapshotLocation:
+      - name: nginx
+        provider: aws
+        config:
+            region: fr-par
+
     defaultBackupTTL: "720h"  # Set this to a duration greater than your schedule interval, e.g., 720 hours.
     backupSyncPeriod: "720h"
     garbageCollectionFrequency: "720h"
@@ -63,7 +70,7 @@ velero:
         - mountPath: /target
           name: plugins
 
-  snapshotsEnabled: false
+  snapshotsEnabled: true
 
   credentials:
     useSecret: true

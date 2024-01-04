@@ -14,3 +14,6 @@ metadata:
 provisioner: csi.scaleway.com
 reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
+
+
+

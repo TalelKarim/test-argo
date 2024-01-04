@@ -1,0 +1,9 @@
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: new-snapshot-dolibarr
+spec:
+  volumeSnapshotClassName: scw-snapshot
+  source:
+        persistentVolumeClaimName: dolibarr-documents
+
